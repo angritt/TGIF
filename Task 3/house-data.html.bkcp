@@ -156,7 +156,7 @@
 		}
 
 		function getHouseData() {
-			var stateList = [];
+			var stateList = listStates;
 			var partyFilter = parties;
 			var xhttp = new XMLHttpRequest();
 
@@ -170,15 +170,15 @@
 					var tblRows = "";
 
 				//States Dropdown List
-					if(listStates.length === 0){
+					if(listStates = []){
 						for (i = 0; i < members.length; i++){
 							var listState = members[i].state;
 							listState = "<option value="+listState+">"+listState+"</option>";
 							listStates.push(listState);
 						}
-  					listStates = listStates.sort();
-  					listStates = $(listStates).get();
-  					listStates = jQuery.uniqueSort(listStates);
+					listStates = listStates.sort();
+					listStates = $(listStates).get();
+					listStates = jQuery.uniqueSort(listStates);
 					}
 
 					//Created Filter Members - Filtered by Party
@@ -218,7 +218,8 @@
 								name = filteredMembers[i].first_name + ' ' +filteredMembers[i].middle_name+' '+ filteredMembers[i].last_name;
 								}
 
-  					//Edit Filtered Members Party
+
+					//Edit Filtered Members Party
 						var affiliation = null;
 						if (filteredMembers[i].party == "D"){
 							affiliation = "Democrat";
@@ -228,11 +229,12 @@
 							affiliation = "Independent"
 						}
 
+
 						//Create Table Rows
 						var tblRow = "<tr><td><a href=\"" + filteredMembers[i].url + "\">" + name +"</a></td><td>" + affiliation +"</td><td>" + filteredMembers[i].state +"</td><td>" + filteredMembers[i].votes_with_party_pct +" %" + "</td></tr>";
 
 						var tblRows = tblRows + tblRow;
-					}//End Filtered Members Loop
+					}
 
 					//Table Rows
 					if (tblRows == ""){
@@ -242,7 +244,7 @@
 				}
 
 				//Write Document
-				if (stateList.length == 0){
+				if (stateList == ""){
 					document.getElementById('states').innerHTML = "<option value=\"All\">All</option>" + listStates;
 				}else{
 					document.getElementById('states').innerHTML = "<option value=\"All\">All</option>" + stateList;

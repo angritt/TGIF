@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-    <meta name="viewport" content="width-device-width, initial-scale-1">    
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <head>
+    <meta name="viewport" content="width-device-width, initial-scale-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-		.navbar-light .navbar-nav .nav-link {
-			color:#007bff;
-			}
-		.nav-item.active {
-			background-color:#CCCCCC;
-			color:#000000;
-			}
-	</style>    
-    <title>Senate</title></head>
-    
-    <body style="font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;">
-    <div class="container">
+    	.navbar-light .navbar-nav .nav-link {
+    		color:#007bff;
+    		}
+    	.nav-item.active {
+    		background-color:#CCCCCC;
+    		color:#000000;
+    		}
+    </style>
+    <title>Senate</title>
+  </head>
+
+  <body style="font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;">
+  <div class="container">
     <header class="p-3 mx-auto">
-    <div class="clearfix">
-    	<div class="float-left align-items-middle"><h1>TGIF</h1></div>
-    	<div class="float-right mt-3"><img src="mail.svg" class="p-1"/><a href="mailto:info@tgif.info">info@tgif.info</a></div>
-    </div>   
+      <div class="clearfix">
+      	<div class="float-left align-items-middle"><h1>TGIF</h1></div>
+      	<div class="float-right mt-3">
+          <img src="mail.svg" class="p-1"/><a href="mailto:info@tgif.info">info@tgif.info</a>
+        </div>
+      </div>
     </header>
-    
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light clear">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,7 +36,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
-          </li> 
+          </li>
           <li class="nav-item dropdown active">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">113th Congress</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -54,29 +57,29 @@
               <a class="dropdown-item nav-item" href="house-loyalty.html">House of Representatives</a>
               <a class="dropdown-item nav-item" href="senate-loyalty.html">Senate</a>
             </div>
-          </li>            
+          </li>
         </ul>
       </div>
-    </nav> 
+    </nav>
 
-	<div class="card mt-3 mb-3">
+  <div class="card mt-3 mb-3">
       <div class="card-header h2">
         Senators
       </div>
       <div class="card-body">
         <p class="card-text">First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House</p>
       </div>
-	</div>
+  </div>
 
-	<div class="row">
+  <div class="row">
         <div class="input-group col-7" id="checkboxes">
-			<div class="input-group-prepend">
-		<span class="input-group-text bg-transparent border-0">Filter by party:</span>
-			</div>
-			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="republicanCheckbox" value="rebpulicans">
-				<label class="form-check-label" for="inlineCheckbox1">Republican</label>
-			</div>
+  		<div class="input-group-prepend">
+  	<span class="input-group-text bg-transparent border-0">Filter by party:</span>
+  		</div>
+  		<div class="form-check form-check-inline">
+  			<input class="form-check-input" type="checkbox" id="republicanCheckbox" value="rebpulicans">
+  			<label class="form-check-label" for="inlineCheckbox1">Republican</label>
+  		</div>
             <div class="form-check form-check-inline">
             	<input class="form-check-input" type="checkbox" id="democratCheckbox" value="democrats">
                 <label class="form-check-label" for="inlineCheckbox2">Democrat</label>
@@ -86,178 +89,179 @@
                 <label class="form-check-label" for="inlineCheckbox3">Independent</label>
             </div>
         </div>
-		<div class="col-5">      		
-			Filter by State
+  	<div class="col-5">
+  		Filter by State
             <select class="custom-select border-0 col-3" id="states"></select>
-		</div>
-		
+  	</div>
+
     </div>
-    
-        <!--Table container-->                       
-        
+
+        <!--Table container-->
+
     <div id="senate_data"></div>
-        
-	<footer class="bg-light clear p-2 mt-3 mb-3 text-center">
-    	&copy; 2016 TGIF | All Rights Reserved
-    </footer>
-    
-	<script>
-	window.addEventListener("load", getSenateData)
-	document.getElementById("states").addEventListener("change", getSelected)
-	document.getElementById("checkboxes").addEventListener("input", getPartyBox)
-	var parties = [];
-	var listStates = [];
-	var stateFilter = "";
-	var matchedOption = "";
-	
-		function getSelected() {
-			stateFilter = states.value;
-			
-			function searchOption(selectedOption) {
-				return selectedOption == "<option value="+stateFilter+">"+stateFilter+"</option>";
-				}
-				
-			matchedOption = listStates.findIndex(searchOption);
-			if(matchedOption == -1){
-				stateFilter = "";
-				listStates = [];
-			}else{
-				listStates.splice(matchedOption, 1, "<option value="+stateFilter+" selected>"+stateFilter+"</option>");	
-			}
 
-			getPartyBox();
+  <footer class="bg-light clear p-2 mt-3 mb-3 text-center">
+  	&copy; 2016 TGIF | All Rights Reserved
+  </footer>
 
-		}
-	
-		function getPartyBox() {
-			var republicans =  republicanCheckbox.checked;
-			var democrats =  democratCheckbox.checked;
-			var independents =  independentCheckbox.checked;
-			
-			if (republicans == true){
-				republicans = "R";
-				parties.unshift("R");
-				}
-				
-			if (democrats == true){
-				democrats = "D";
-				parties.unshift("D");
-				}
-				
-			if (independents == true){
-				independents = "I";
-				parties.unshift("I");
-				}
-									
-			getSenateData();
-		
-			parties = [];
-		}	
+<script>
+  window.addEventListener("load", getSenateData);
+  document.getElementById("states").addEventListener("change", getSelected);
+  document.getElementById("checkboxes").addEventListener("input", getPartyBox);
+  var parties = [];
+  var listStates = [];
+  var stateFilter = "";
+  var matchedOption = "";
 
-		function getSenateData() {	
-			var stateList = [];		
-			var partyFilter = parties;
-			var xhttp = new XMLHttpRequest();
+  	function getSelected() {
+  		stateFilter = states.value;
 
-			xhttp.onreadystatechange = function(){
-				if(xhttp.readyState == 4 && xhttp.status == 200) {
-					var senateData = JSON.parse(xhttp.responseText);
-					var members = new Array(senateData.results[0].members);
-					var members = members[0];
-					var filteredMembers = [];
-					var remainingMembers = [];
-					var tblRows = "";
-								
-				//States Dropdown List				
-					if(listStates.length === 0){
-						for (i = 0; i < members.length; i++){
-							var listState = members[i].state;
-							listState = "<option value="+listState+">"+listState+"</option>";
-							listStates.push(listState);
-							}
-						listStates = listStates.sort();	
-						listStates = $(listStates).get();
-						listStates = jQuery.uniqueSort(listStates);
+  		function searchOption(selectedOption) {
+  			return selectedOption == "<option value="+stateFilter+">"+stateFilter+"</option>";
+  			}
+
+  		matchedOption = listStates.findIndex(searchOption);
+  		if(matchedOption == -1){
+  			stateFilter = "";
+  			listStates = [];
+  		}else{
+  			listStates.splice(matchedOption, 1, "<option value="+stateFilter+" selected>"+stateFilter+"</option>");
+  		}
+
+  		getPartyBox();
+
+  	}
+
+  	function getPartyBox() {
+  		var republicans =  republicanCheckbox.checked;
+  		var democrats =  democratCheckbox.checked;
+  		var independents =  independentCheckbox.checked;
+
+  		if (republicans == true){
+  			republicans = "R";
+  			parties.unshift("R");
+  			}
+
+  		if (democrats == true){
+  			democrats = "D";
+  			parties.unshift("D");
+  			}
+
+  		if (independents == true){
+  			independents = "I";
+  			parties.unshift("I");
+  			}
+
+  		getSenateData();
+
+  		parties = [];
+  	}
+
+  	function getSenateData() {
+  		var stateList = [];
+  		var partyFilter = parties;
+  		var xhttp = new XMLHttpRequest();
+
+  		xhttp.onreadystatechange = function(){
+  			if(xhttp.readyState == 4 && xhttp.status == 200) {
+  				var senateData = JSON.parse(xhttp.responseText);
+  				var members = new Array(senateData.results[0].members);
+  				var members = members[0];
+  				var filteredMembers = [];
+  				var remainingMembers = [];
+  				var tblRows = "";
+
+  			//States Dropdown List
+  				if(listStates.length === 0){
+  					for (i = 0; i < members.length; i++){
+  						var listState = members[i].state;
+  						listState = "<option value="+listState+">"+listState+"</option>";
+  						listStates.push(listState);
+  						}
+  					listStates = listStates.sort();
+  					listStates = $(listStates).get();
+  					listStates = jQuery.uniqueSort(listStates);
+  				}
+
+  				//Created Filter Members - Filtered by Party
+  				for (i = 0; i < members.length; i++){
+  					if (members[i].party == partyFilter[0]){
+  						filteredMembers.push(members[i]);
+  						}
+  					if (members[i].party == partyFilter[1]){
+  						filteredMembers.push(members[i]);
+  						}
+  					if (members[i].party == partyFilter[2]){
+  						filteredMembers.push(members[i]);
+  						}
+  				}
+
+  				//If No Party Filter - Set Filtered Members
+  				if (filteredMembers.length == 0 && (partyFilter.length == 0 || partyFilter.length == undefined)){
+  					filteredMembers = members;
+  					}
+
+  				//Filter By State
+  					if(stateFilter !== "") {
+  						for (i = 0; i < filteredMembers.length; i++){
+  							if (filteredMembers[i].state == stateFilter){
+  								remainingMembers.push(filteredMembers[i]);
+  							}
+  						}
+  							filteredMembers = remainingMembers;
+  					}
+
+  				//Begin Editing Filtered Members Loop - Names
+  				for (i = 0; i < filteredMembers.length; i++){
+  					var name = null;
+  						if (filteredMembers[i].middle_name == null || "") {
+  							name = filteredMembers[i].first_name+ ' ' + filteredMembers[i].last_name;
+  						}else{
+  							name = filteredMembers[i].first_name + ' ' +filteredMembers[i].middle_name+' '+ filteredMembers[i].last_name;
+  							}
+
+  					//Edit Filtered Members Parties
+  					var affiliation = null;
+						if (filteredMembers[i].party == "D"){
+              affiliation = "Democrat";
+						}else if(filteredMembers[i].party == "R"){
+              affiliation = "Republican";
+						}else if (filteredMembers[i].party == "I"){
+              affiliation = "Independent"
 						}
-						
-					//Created Filter Members - Filtered by Party
-					for (i = 0; i < members.length; i++){
-						if (members[i].party == partyFilter[0]){
-							filteredMembers.push(members[i]);					
-							}
-						if (members[i].party == partyFilter[1]){
-							filteredMembers.push(members[i]);					
-							}
-						if (members[i].party == partyFilter[2]){
-							filteredMembers.push(members[i]);					
-							}
-					}
 
-					//If No Party Filter - Set Filtered Members
-					if (filteredMembers.length == 0 && (partyFilter.length == 0 || partyFilter.length == undefined)){
-						filteredMembers = members;
-						}
-						
-					//Filter By State
-						if(stateFilter !== "") {
-							for (i = 0; i < filteredMembers.length; i++){							
-								if (filteredMembers[i].state == stateFilter){
-									remainingMembers.push(filteredMembers[i]);
-								}
-							}
-								filteredMembers = remainingMembers;
-						}
+  					//Create Table Rows
+  					var tblRow = "<tr><td><a href=\"" + filteredMembers[i].url + "\">" + name +"</a></td><td>" + affiliation +"</td><td>" + filteredMembers[i].state +"</td><td>" + filteredMembers[i].votes_with_party_pct +" %" + "</td></tr>";
 
-					//Begin Editing Filtered Members Loop - Names
-					for (i = 0; i < filteredMembers.length; i++){											
-						var name = null;
-							if (filteredMembers[i].middle_name == null || "") {
-								name = filteredMembers[i].first_name+ ' ' + filteredMembers[i].last_name;
-							}else{
-								name = filteredMembers[i].first_name + ' ' +filteredMembers[i].middle_name+' '+ filteredMembers[i].last_name;							
-								}
-							
-						//Edit Filtered Members Parties		
-						var affiliation = null;
-							if (filteredMembers[i].party == "D"){
-								affiliation = "Democrat";
-								}else if(filteredMembers[i].party == "R"){
-								affiliation = "Republican";
-								}else if (filteredMembers[i].party == "I"){
-								affiliation = "Independent"
-								}
-						
-						//Create Table Rows		
-						var tblRow = "<tr><td><a href=\"" + filteredMembers[i].url + "\">" + name +"</a></td><td>" + affiliation +"</td><td>" + filteredMembers[i].state +"</td><td>" + filteredMembers[i].votes_with_party_pct +" %" + "</td></tr>";
-										
-						var tblRows = tblRows + tblRow;
-					} //End Filtered Members Loop
-					
-					if (tblRows == ""){
-					var tblRows = "<tr><td colspan=\"4\">No Party Members</td></tr>";					
-					}
+  					var tblRows = tblRows + tblRow;
+  				} //End Filtered Members Loop
 
-				}
-				
-				//Write Document
-				if (stateList.length == 0){
-					document.getElementById('states').innerHTML = "<option value=\"All\">All</option>" + listStates;
-				}else{
-					document.getElementById('states').innerHTML = "<option value=\"All\">All</option>" + stateList;
-				}				
+          //Table Rows
+  				if (tblRows == ""){
+  				var tblRows = "<tr><td colspan=\"4\">No Party Members</td></tr>";
+  				}
 
-				document.getElementById('senate_data').innerHTML = "<table class=\"table\"><caption hidden>Senators of the 113th U.S. Congress</caption><thead><tr><th>Senator</th><th>Party Affiliation</th><th>State</th><th>Party Line</th></tr></thead><tbody>" + tblRows + "</tbody></table>";
-				
-			}
+  			}
 
-			xhttp.open('GET','pro-congress-113-senate.json', true);
-			xhttp.send();
-		}
-		
-	</script>   
-    </div>
-    
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  			//Write Document
+  			if (stateList.length == 0){
+  				document.getElementById('states').innerHTML = "<option value=\"All\">All</option>" + listStates;
+  			}else{
+  				document.getElementById('states').innerHTML = "<option value=\"All\">All</option>" + stateList;
+  			}
+
+  			document.getElementById('senate_data').innerHTML = "<table class=\"table\"><caption hidden>Senators of the 113th U.S. Congress</caption><thead><tr><th>Senator</th><th>Party Affiliation</th><th>State</th><th>Party Line</th></tr></thead><tbody>" + tblRows + "</tbody></table>";
+
+  		}
+
+  		xhttp.open('GET','pro-congress-113-senate.json', true);
+  		xhttp.send();
+  	}
+
+</script>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
