@@ -1,7 +1,6 @@
 // JavaScript Document
 
 function getHouseStats() {
-	var xhttp = new XMLHttpRequest();
 	var republicans = [];
 	var repPartyVotes = null;
 	var repPartyVotesTotal = null;
@@ -20,20 +19,20 @@ function getHouseStats() {
 	var names = [];
 	var ids = [];
 
-	xhttp.onreadystatechange = function () {
-		if(xhttp.readyState == 4 && xhttp.status == 200) {
-			var statistics = JSON.parse(xhttp.responseText);
-			var members = [statistics.results[0].members];
-			var members = members[0];
-            
-            // Eliminates members who never voted, else they show up as 100% attendance
-            function eliminateNonVoters(){
-                for (i=0; i<members.length; i++){
-                    if (members[i].total_votes != 0) {
-                    voted.push(members[i]);
-                    }
-                }
-            }
+	var url = "pro-congress-113-house.json";
+
+	$.getJSON(url, function(responseJSON){
+		var members = [responseJSON.results[0].members];
+		var members = members[0];
+
+      // Eliminates members who never voted, else they show up as 100% attendance
+      function eliminateNonVoters(){
+          for (i=0; i<members.length; i++){
+              if (members[i].total_votes != 0) {
+              voted.push(members[i]);
+              }
+          }
+      }
 
 			//Removes null and empty middle name fields from filtered representative arrays
 			function editVotedNames(){
@@ -67,7 +66,6 @@ function getHouseStats() {
 					independents.push(members[i]);
 					}
 			} <!-- end party count -->
-                
 
 			//Get Party Vote Count
 			for (i = 0; i < republicans.length; i++){
@@ -246,19 +244,12 @@ function getHouseStats() {
 				document.getElementById('house_most_engaged').innerHTML = "<table class=\"table\"><thead><tr><th>Name</th><th>Number of Votes Made</th><th>Percentage of Votes Made</th></tr></thead><tbody>"+most_engaged_rows+"</tbody></table>";
 			}
 
-		}
-		// <!--close xhttp if statement -->
+		})
 
-	}
-	// <!--  close onready state change-->
-
-	xhttp.open('GET','pro-congress-113-house.json', true);
-	xhttp.send();
 }
 // <!--end getHouseStats -->
 
 function getSenateStats() {
-	var xhttp = new XMLHttpRequest();
 	var republicans =  [];
 	var repPartyVotes = null;
 	var repPartyVotesTotal = null;
@@ -277,10 +268,10 @@ function getSenateStats() {
 	var names = [];
 	var ids = [];
 
-	xhttp.onreadystatechange = function () {
-		if(xhttp.readyState == 4 && xhttp.status == 200) {
-		var statistics = JSON.parse(xhttp.responseText);
-		var members = [statistics.results[0].members];
+	var url = "https://api.myjson.com/bins/13qi7v";
+
+	$.getJSON(url, function(responseJSON){
+		var members = [responseJSON.results[0].members];
 		var members = members[0];
 
         // Eliminates members who never voted, else they show up as 100% attendance
@@ -354,7 +345,7 @@ function getSenateStats() {
 			for (i = 0; i < 10; i++){
               ids.push(voted[i].id);
               var name = null;
-              editVotedNames();                
+              editVotedNames();
               var missedVotes = voted[i].missed_votes;
               var missedVotePct = voted[i].missed_votes_pct;
               representatives = {"Name":name, "Missed Votes":missedVotes, "Missed Votes Percentage":missedVotePct};
@@ -392,18 +383,18 @@ function getSenateStats() {
 			}
 
 		//checks the rest of members array for equally enaged voting records not yet shown
-            var tenPercentMade = 100 - voted[9].missed_votes_pct;
-                for (i = 0; i < members.length; i++){
-                    if ((100 - members[i].missed_votes_pct) == tenPercentMade && ids.includes(members[i].id)==false){
-                        var name = null;
-                        editNames();
-                        var madeVotes = members[i].total_votes - members[i].missed_votes;
-                        var madeVotesPct = 100 - members[i].missed_votes_pct;
-                        representatives = {"Name":name, "Made Votes":madeVotes, "Made Votes Percentage":madeVotesPct};
-                        most_engaged_row = "<tr><td>" + representatives["Name"] +"</td><td>" + representatives["Made Votes"] +"</td><td>" + representatives["Made Votes Percentage"] +"</td></tr>"
-                        most_engaged_rows = most_engaged_rows + most_engaged_row;
-                    }
-                }
+    var tenPercentMade = 100 - voted[9].missed_votes_pct;
+        for (i = 0; i < members.length; i++){
+            if ((100 - members[i].missed_votes_pct) == tenPercentMade && ids.includes(members[i].id)==false){
+                var name = null;
+                editNames();
+                var madeVotes = members[i].total_votes - members[i].missed_votes;
+                var madeVotesPct = 100 - members[i].missed_votes_pct;
+                representatives = {"Name":name, "Made Votes":madeVotes, "Made Votes Percentage":madeVotesPct};
+                most_engaged_row = "<tr><td>" + representatives["Name"] +"</td><td>" + representatives["Made Votes"] +"</td><td>" + representatives["Made Votes Percentage"] +"</td></tr>"
+                most_engaged_rows = most_engaged_rows + most_engaged_row;
+            }
+        }
 		}
 
 		//Creates Least Loyal Table Row Loops
@@ -416,11 +407,12 @@ function getSenateStats() {
 				ids.push(members[i].id);
 				var name = null;
 				editVotedNames();
-                var partyLineVotes = Math.round((voted[i].total_votes * voted[i].votes_with_party_pct)/100);
-                var partyLineVotePct = voted[i].votes_with_party_pct;
-                representatives = {"Name":name, "Party Line Votes":partyLineVotes, "Party Line Percentage":partyLineVotePct};
-                least_loyal_row = "<tr><td>" + representatives["Name"] +"</td><td>" + representatives["Party Line Votes"] +"</td><td>" + representatives["Party Line Percentage"] +"</td></tr>"
-                least_loyal_rows = least_loyal_rows + least_loyal_row;
+
+        var partyLineVotes = Math.round((voted[i].total_votes * voted[i].votes_with_party_pct)/100);
+        var partyLineVotePct = voted[i].votes_with_party_pct;
+        representatives = {"Name":name, "Party Line Votes":partyLineVotes, "Party Line Percentage":partyLineVotePct};
+        least_loyal_row = "<tr><td>" + representatives["Name"] +"</td><td>" + representatives["Party Line Votes"] +"</td><td>" + representatives["Party Line Percentage"] +"</td></tr>"
+        least_loyal_rows = least_loyal_rows + least_loyal_row;
 			}
 			for (i = 0; i < members.length; i++){
 			 var tenPercentLeastLoyal = members[9].votes_with_party_pct;
@@ -496,21 +488,13 @@ function getSenateStats() {
 	    document.getElementById('senate_most_engaged').innerHTML = "<table class=\"table\"><thead><tr><th>Name</th><th>Number of Votes Made</th><th>Percentage of Votes Made</th></tr></thead><tbody>"+most_engaged_rows+"</tbody></table>";
 	    }
 
-		}
-		// <!--close xhttp if statement -->
-
-	}
-	// <!-- onready state change-->
-
-			xhttp.open('GET','pro-congress-113-senate.json', true);
-			xhttp.send();
+		})
 
 	}
 	//end getsenateStats
 
 
 /*
-var url = "https://api.myjson.com/bins/13qi7v";
 
 $.getJSON(url, function(data){
 
@@ -522,14 +506,9 @@ $.getJSON(url, function(data){
 
 })
 
-
-
-
-
-
-
 function showMeData(receivedData){
 	console.log(receivedData)
 
 }
 */
+//
